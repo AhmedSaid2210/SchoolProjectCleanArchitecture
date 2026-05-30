@@ -1,0 +1,21 @@
+﻿
+
+namespace SchoolProject.Core.Wrappers
+{
+    public static class QueryableExtensions
+    {
+        public static async Task<PaginatedRasult<T>> ToPaginatedListAsync<T>(this IQueryable<T> source,int pageNumber,int pageSize)
+            where T : class
+        {
+            if(source ==  null) throw new Exception("source is empty");
+            pageNumber = pageNumber ==0 ? 1 : pageNumber;
+            pageSize = pageSize == 0 ? 10 : pageSize;
+            int count =  source.Count();
+            if (count == 0) return PaginatedRasult<T>.Success(new List<T>(), count, pageNumber, pageSize);
+            pageNumber = pageNumber <= 0 ? 1 : pageNumber;
+            var items = source.Skip((pageNumber-1)* pageSize).Take(pageSize).ToList();
+            return PaginatedRasult<T>.Success(items, count, pageNumber, pageSize);
+
+        }
+    }
+}
