@@ -464,6 +464,12 @@ namespace SchoolProject.Infrustructure.Migrations
 
             modelBuilder.Entity("SchoolProject.Data.Entities.StudentSubject", b =>
                 {
+                    b.Property<int>("StudSubID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudSubID"));
+
                     b.Property<int>("StudID")
                         .HasColumnType("int");
 

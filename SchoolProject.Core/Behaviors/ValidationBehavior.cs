@@ -1,5 +1,9 @@
 ﻿using FluentValidation;
 using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
 namespace SchoolProject.Core.Behaviors
 {
     public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>

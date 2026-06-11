@@ -61,6 +61,9 @@ namespace SchoolProject.Core.Features.Student.Queries.Handlers
             var studentList = await queryable.Select(expression).ToPaginatedListAsync(request.PageNumber, request.PageSize);
             return studentList;
         }
+
+
         #endregion
+
     }
 }

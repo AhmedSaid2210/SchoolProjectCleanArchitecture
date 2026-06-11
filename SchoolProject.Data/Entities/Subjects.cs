@@ -1,4 +1,8 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+
 
 namespace SchoolProject.Data.Entities
 {
@@ -11,6 +15,9 @@ namespace SchoolProject.Data.Entities
             InstructorSubjects = new HashSet<InstructorSubject>();
 
         }
+        [Key]
+        public int SubID { get; set; }
+        [StringLength(500)]
         public string SubjectName { get; set; }
         public DateTime Period { get; set; }
 

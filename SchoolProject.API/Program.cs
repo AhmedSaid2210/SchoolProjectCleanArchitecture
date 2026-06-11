@@ -64,7 +64,7 @@ builder.Services.Configure<RequestLocalizationOptions>(option =>
     option.SupportedCultures = Cultures;
     option.SupportedUICultures = Cultures;
 });
-
+    
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddSwaggerGen();

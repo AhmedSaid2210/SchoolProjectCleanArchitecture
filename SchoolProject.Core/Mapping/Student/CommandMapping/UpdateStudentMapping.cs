@@ -1,4 +1,7 @@
 ﻿using SchoolProject.Core.Features.Student.Commands.Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace SchoolProject.Core.Mapping.Student
 {

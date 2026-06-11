@@ -1,4 +1,8 @@
 ﻿using SchoolProject.Core.Features.Student.Commands.Models;
+using SchoolProject.Core.Features.Student.Queries.Response;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace SchoolProject.Core.Mapping.Student
 {

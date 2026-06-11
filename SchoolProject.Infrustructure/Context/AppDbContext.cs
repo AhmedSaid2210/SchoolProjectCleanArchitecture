@@ -20,11 +20,11 @@ namespace SchoolProject.Infrustructure.Data
     {
         public AppDbContext()
         {
-              
+       
         }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-
+            
         }
         public DbSet<User> User { get; set; }
         public DbSet<Subjects> Subjects { get; set; }
@@ -91,7 +91,7 @@ namespace SchoolProject.Infrustructure.Data
                     {
                         auditEntry.KeyValues[propertyName] = property.CurrentValue;
                         continue;
-                    }
+    }
 
                     switch (entry.State)
                     {
