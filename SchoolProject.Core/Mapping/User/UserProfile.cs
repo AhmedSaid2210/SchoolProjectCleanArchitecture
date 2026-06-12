@@ -8,7 +8,11 @@ namespace SchoolProject.Core.Mapping.User
     {
         public UserProfile()
         {
-            AddUserMapping();
+            AddUserMapping(); 
+            UpdateUserMapping();
+
+            GetUserListMapping();
+            GetUserByIdMapping();
         }
        
     }

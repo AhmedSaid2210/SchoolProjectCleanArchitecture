@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using SchoolProject.Data.Entities;
 using SchoolProject.Data.Entities.Identity;
+using SchoolProject.Data.Helper;
 using System.Reflection;
+using System.Security.Claims;
 
 
 namespace SchoolProject.Infrustructure.Data
@@ -18,23 +21,35 @@ namespace SchoolProject.Infrustructure.Data
                                                 IdentityRoleClaim<int>,
                                                 IdentityUserToken<int>>
     {
-        public AppDbContext()
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
+      
+        public AppDbContext(DbContextOptions<AppDbContext> options, IHttpContextAccessor httpContextAccessor) : base(options)
         {
-       
+            _httpContextAccessor = httpContextAccessor;
         }
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-        {
-            
-        }
+        private string CurrentUser =>
+         _httpContextAccessor.HttpContext?.User?
+        .FindFirst(nameof(UserClaimModel.UserName))?.Value
+        ?? "System";
+
         public DbSet<User> User { get; set; }
+        public DbSet<Role> Role { get; set; }
+
         public DbSet<Subjects> Subjects { get; set; }
         public DbSet<StudentSubject> StudentSubjects { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<DepartmetSubject> DepartmetSubjects { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
+        public DbSet<UserRefreshToken> UserRefreshToken { get; set; }
 
-
+       
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(modelBuilder);
+        }
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var auditEntries = OnBeforeSaveChanges();
@@ -45,12 +60,6 @@ namespace SchoolProject.Infrustructure.Data
 
             return result;
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            base.OnModelCreating(modelBuilder);
-        }
-
         private async Task OnAfterSaveChangesAsync(List<AuditEntry> auditEntries,CancellationToken cancellationToken)
         {
             if (!auditEntries.Any())
@@ -81,7 +90,7 @@ namespace SchoolProject.Infrustructure.Data
 
                 auditEntry.TableName = entry.Metadata.GetTableName()!;
 
-                auditEntry.UserName = "Ahmed" ?? "System";
+                auditEntry.UserName = CurrentUser;
 
                 foreach (var property in entry.Properties)
                 {
@@ -136,7 +145,7 @@ namespace SchoolProject.Infrustructure.Data
                             
                             auditable.CreatedOn = DateTime.UtcNow;
 
-                            auditable.CreatedBy = "Ahmed";
+                            auditable.CreatedBy = CurrentUser;
 
                             break;
 
@@ -144,7 +153,7 @@ namespace SchoolProject.Infrustructure.Data
 
                             auditable.LastModifiedOn = DateTime.UtcNow;
 
-                            auditable.LastModifiedBy = "Ahmed";
+                            auditable.LastModifiedBy = CurrentUser;
                             break;
 
                         case EntityState.Deleted:
@@ -155,7 +164,7 @@ namespace SchoolProject.Infrustructure.Data
 
                             auditable.DeletedOn = DateTime.UtcNow;
 
-                            auditable.DeletedBy = "Ahmed";
+                            auditable.DeletedBy = CurrentUser;
 
                             break;
                     }

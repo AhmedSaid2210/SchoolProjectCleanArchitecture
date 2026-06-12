@@ -9,5 +9,6 @@ namespace SchoolProject.Core.Resources
         public const string Deleted  = "Deleted";
         public const string Created  = "Created";
         public const string Update   = "Update";
+
     }
 }

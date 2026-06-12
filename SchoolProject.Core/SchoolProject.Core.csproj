@@ -19,18 +19,17 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageReference Include="MediatR" Version="14.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.11" />
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="10.0.8" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Authentication\Queries\Response\" />
     <Folder Include="Features\Instructor\Commands\Validators\" />
     <Folder Include="Features\Subject\Commands\" />
     <Folder Include="Features\Subject\Queries\Validators\" />
-    <Folder Include="Features\User\Queries\Handlers\" />
-    <Folder Include="Features\User\Queries\Models\" />
-    <Folder Include="Features\User\Queries\Response\" />
+    <Folder Include="Mapping\Role\CommandMapping\" />
     <Folder Include="Mapping\Subject\QueryMapping\" />
-    <Folder Include="Mapping\User\QueryMapping\" />
   </ItemGroup>
 
 </Project>
