@@ -26,7 +26,11 @@
     <Folder Include="Features\Instructor\Commands\Validators\" />
     <Folder Include="Features\Subject\Commands\" />
     <Folder Include="Features\Subject\Queries\Validators\" />
+    <Folder Include="Features\User\Queries\Handlers\" />
+    <Folder Include="Features\User\Queries\Models\" />
+    <Folder Include="Features\User\Queries\Response\" />
     <Folder Include="Mapping\Subject\QueryMapping\" />
+    <Folder Include="Mapping\User\QueryMapping\" />
   </ItemGroup>
 
 </Project>

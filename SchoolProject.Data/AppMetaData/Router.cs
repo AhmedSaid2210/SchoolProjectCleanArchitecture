@@ -55,6 +55,17 @@ namespace SchoolProject.Data.AppMetaData
             public const string Paginated = Prefix + "Paginated";
 
         }
+        public static class UserRouting
+        {
+            public const string Prefix = Rule + "User/";
+            public const string List = Prefix + "List";
+            public const string GetById = Prefix + "GetById" + SingleRoute;
+            public const string AddUser = Prefix + "AddUser";
+            public const string Update = Prefix + "Update";
+            public const string Delete = Prefix + "Delete" + SingleRoute;
+            public const string Paginated = Prefix + "Paginated";
+
+        }
 
     }
 }
