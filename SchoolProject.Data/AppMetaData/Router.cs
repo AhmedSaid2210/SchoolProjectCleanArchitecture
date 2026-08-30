@@ -55,6 +55,43 @@ namespace SchoolProject.Data.AppMetaData
             public const string Paginated = Prefix + "Paginated";
 
         }
+        public static class UserRouting
+        {
+            public const string Prefix = Rule + "User/";
+            public const string List = Prefix + "List";
+            public const string GetById = Prefix + "GetById" + SingleRoute;
+            public const string AddUser = Prefix + "AddUser";
+            public const string Update = Prefix + "Update";
+            public const string Delete = Prefix + "Delete" + SingleRoute;
+            public const string Paginated = Prefix + "Paginated";
+            public const string ChangePassword = Prefix + "ChangePassword";
+
+
+        }
+        public static class AuthenticationRouting
+        {
+            public const string Prefix = Rule + "Authentication/";
+            public const string SignIn = Prefix + "SignIn";
+            public const string RefreshToken = Prefix + "Refresh-Token";
+            public const string ValidateToken = Prefix + "Validate-Token";
+
+        }
+        public static class AuthorizationRouting
+        {
+            public const string Prefix = Rule + "Authorization/";
+            public const string AddRole = Prefix + "Add-Role";
+            public const string EditRole = Prefix + "Edit-Role";
+            public const string DeleteRole = Prefix + "Delete-Role";
+            public const string GetById = Prefix + "GetById" + SingleRoute;
+            public const string List = Prefix + "List";
+            public const string UserRoles = Prefix + "User-Roles"+ SingleRoute;
+            public const string UserClaims = Prefix + "User-Claims" + SingleRoute;
+            public const string UpdateUserRoles = Prefix + "Update-User-Roles";
+            public const string UpdateUserClaims = Prefix + "Update-User-Claims";
+
+
+        }
+
 
     }
 }

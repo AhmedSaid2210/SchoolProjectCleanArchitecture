@@ -15,9 +15,6 @@ namespace SchoolProject.Data.Entities
             InstructorSubjects = new HashSet<InstructorSubject>();
 
         }
-        [Key]
-        public int SubID { get; set; }
-        [StringLength(500)]
         public string SubjectName { get; set; }
         public DateTime Period { get; set; }
 

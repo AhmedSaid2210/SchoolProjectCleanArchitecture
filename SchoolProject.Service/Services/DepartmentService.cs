@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities;
-using SchoolProject.Data.Helper;
+using SchoolProject.Data.Enums;
 using SchoolProject.Infrustructure.Abstracts;
 using SchoolProject.Service.Abstracts;
 
@@ -93,7 +93,7 @@ namespace SchoolProject.Service.Services
                                             .Where (x => x.IsDeleted.Equals(false))
                                             .FirstOrDefaultAsync();
 
-            if (departmentExist == null) return null;
+            
 
             return departmentExist;
         }
