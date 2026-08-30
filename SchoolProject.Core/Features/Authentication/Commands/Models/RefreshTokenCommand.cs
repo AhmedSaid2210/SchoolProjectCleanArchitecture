@@ -2,7 +2,7 @@
 
 using MediatR;
 using SchoolProject.Core.Bases;
-using SchoolProject.Data.Helper;
+using SchoolProject.Data.Responses;
 
 namespace SchoolProject.Core.Features.Authentication.Commands.Models
 {

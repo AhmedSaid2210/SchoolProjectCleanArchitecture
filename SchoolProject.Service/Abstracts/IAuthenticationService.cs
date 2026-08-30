@@ -1,6 +1,6 @@
 ﻿
 using SchoolProject.Data.Entities.Identity;
-using SchoolProject.Data.Helper;
+using SchoolProject.Data.Responses;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace SchoolProject.Service.Abstracts

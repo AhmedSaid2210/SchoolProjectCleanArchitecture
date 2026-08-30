@@ -79,11 +79,15 @@ namespace SchoolProject.Data.AppMetaData
         public static class AuthorizationRouting
         {
             public const string Prefix = Rule + "Authorization/";
-            public const string AddRole = Prefix + "AddRole";
-            public const string EditRole = Prefix + "EditRole";
-            public const string DeleteRole = Prefix + "DeleteRole";
+            public const string AddRole = Prefix + "Add-Role";
+            public const string EditRole = Prefix + "Edit-Role";
+            public const string DeleteRole = Prefix + "Delete-Role";
             public const string GetById = Prefix + "GetById" + SingleRoute;
             public const string List = Prefix + "List";
+            public const string UserRoles = Prefix + "User-Roles"+ SingleRoute;
+            public const string UserClaims = Prefix + "User-Claims" + SingleRoute;
+            public const string UpdateUserRoles = Prefix + "Update-User-Roles";
+            public const string UpdateUserClaims = Prefix + "Update-User-Claims";
 
 
         }

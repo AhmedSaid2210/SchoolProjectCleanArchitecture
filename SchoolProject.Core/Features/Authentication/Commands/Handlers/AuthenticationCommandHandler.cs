@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.Authentication.Commands.Models;
 using SchoolProject.Core.Resources;
-using SchoolProject.Data.Helper;
+using SchoolProject.Data.Responses;
 using SchoolProject.Service.Abstracts;
 
 

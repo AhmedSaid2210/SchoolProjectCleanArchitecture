@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NSwag.Annotations;
 using SchoolProject.API.Bases;
 using SchoolProject.Core.Features.Authorization.Commands.Models;
 using SchoolProject.Core.Features.Authorization.Queries.Models;
@@ -18,6 +19,20 @@ namespace SchoolProject.API.Controllers
             var command = new GetAllRoleQuery();
             return NewResult(await _mediator.Send(command));
         }
+        [HttpGet(Router.AuthorizationRouting.UserRoles)]
+        public async Task<IActionResult> GetUserRoles([FromRoute] int id)
+        {
+            var command = new ManageUserRolesQuery { Id = id };
+            return NewResult(await _mediator.Send(command));
+        }
+
+        [HttpGet(Router.AuthorizationRouting.UserClaims)]
+        public async Task<IActionResult> GetUserClaims([FromRoute] int id)
+        {
+            var command = new ManageUserClaimsQuery { UserId = id };
+            return NewResult(await _mediator.Send(command));
+        }
+
         [HttpGet(Router.AuthorizationRouting.GetById)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
@@ -36,6 +51,17 @@ namespace SchoolProject.API.Controllers
             return NewResult(await _mediator.Send(command));
         }
 
+        [HttpPut(Router.AuthorizationRouting.UpdateUserRoles)]
+        public async Task<IActionResult> UpdateUserRoles([FromBody] UpdateUserRolesCommand command)
+        {
+            return NewResult(await _mediator.Send(command));
+        }
+        
+        [HttpPut(Router.AuthorizationRouting.UpdateUserClaims)]
+        public async Task<IActionResult> UpdateUserClaims([FromBody] UpdateUserClaimsCommand command)
+        {
+            return NewResult(await _mediator.Send(command));
+        }
         [HttpDelete(Router.AuthorizationRouting.DeleteRole)]
         public async Task<IActionResult> DeleteRole([FromQuery] DeleteRoleCommand command)
         {

@@ -1,6 +1,6 @@
 ﻿
 using SchoolProject.Data.Entities;
-using SchoolProject.Data.Helper;
+using SchoolProject.Data.Enums;
 
 namespace SchoolProject.Service.Abstracts
 {

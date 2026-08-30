@@ -1,5 +1,6 @@
 ﻿
 using SchoolProject.Data.Entities.Identity;
+using SchoolProject.Data.Enums;
 using SchoolProject.Infrustructure.Abstracts;
 using SchoolProject.Service.Abstracts;
 

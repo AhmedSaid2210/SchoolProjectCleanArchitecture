@@ -7,14 +7,17 @@ using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.Authorization.Queries.Models;
 using SchoolProject.Core.Features.Authorization.Queries.Response;
 using SchoolProject.Core.Resources;
-using SchoolProject.Data.Entities.Identity;
+using SchoolProject.Data.Responses;
 using SchoolProject.Service.Abstracts;
 
-namespace SchoolProject.Core.Features.Authorization.Queries.Handler
+namespace SchoolProject.Core.Features.Authorization.Queries.Handler 
 {
     public class RoleQueryHandler : ResponseHandler,
                                     IRequestHandler<GetRoleByIdQuery, Response<GetRoleByIdResponse>>,
-                                    IRequestHandler<GetAllRoleQuery, Response<List<GetAllRoleResponse>>>
+                                    IRequestHandler<GetAllRoleQuery, Response<List<GetAllRoleResponse>>>,
+                                    IRequestHandler<ManageUserRolesQuery, Response<ManageUserRolesResponse>>
+                                    
+
 
     {
         private readonly IAuthorizationService _authorizationService;
@@ -49,6 +52,18 @@ namespace SchoolProject.Core.Features.Authorization.Queries.Handler
             var response = _mapper.Map<List<GetAllRoleResponse>>(roles);
 
             return Success(response);
+        }
+
+        public async Task<Response<ManageUserRolesResponse>> Handle(ManageUserRolesQuery request, CancellationToken cancellationToken)
+        {
+            var userRoles = await _authorizationService.GetUserRolesAsync(request.Id);
+
+            if (userRoles == null)
+            {
+                return NotFound<ManageUserRolesResponse>("User roles not found");
+            }
+
+            return Success(userRoles);
         }
     }
 }

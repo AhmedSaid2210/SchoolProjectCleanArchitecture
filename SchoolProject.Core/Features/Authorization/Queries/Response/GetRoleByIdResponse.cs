@@ -3,7 +3,7 @@ namespace SchoolProject.Core.Features.Authorization.Queries.Response
 {
     public class GetRoleByIdResponse
     {
-        public string Name { get; set; }
+        public string Name { get; set; } 
         
     }
 }
